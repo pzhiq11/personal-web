@@ -3,12 +3,14 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import Skills from './pages/Skills';
-import Experience from './pages/Experience';
-import Projects from './pages/Projects';
-import Works from './pages/Works';
-import Contact from './pages/Contact';
+import { lazy } from 'react';
+// 懒加载路由组件
+const Home = lazy(() => import('./pages/Home'));
+const Skills = lazy(() => import('./pages/Skills'));
+const Experience = lazy(() => import('./pages/Experience'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Works = lazy(() => import('./pages/Works'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
   return (
