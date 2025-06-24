@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Typography, Row, Col, Card, Tag, Image, Button, Modal } from 'antd';
+import { Typography, Row, Col, Card, Tag, Button, Modal } from 'antd';
 import {
   ProjectOutlined,
   EyeOutlined,
@@ -33,15 +33,16 @@ const Projects: React.FC = () => {
       {/* 项目经验 */}
       <Row gutter={[24, 24]}>
         {projects.map((project) => (
-          <Col xs={24} md={12} key={project.id}>
+          <Col xs={24} md={6} key={project.id}>
             <Card className={styles.projectCard} bordered={false}>
-              <div className={styles.imageContainer}>
-                <Image
-                  alt={project.title}
-                  src={project.image}
-                  preview={false}
-                  className={styles.projectImage}
-                />
+              <div 
+                className={styles.imageContainer}
+                style={{ 
+                  backgroundImage: `url(${project.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
                 <div className={styles.imageOverlay} />
               </div>
               <Title level={4} className={styles.projectTitle}>
@@ -93,14 +94,14 @@ const Projects: React.FC = () => {
           {personalWorks.map((work: WorkType) => (
             <Col xs={24} md={8} key={work.id}>
               <Card className={styles.workCard} bordered={false}>
-                <div className={styles.workImageContainer}>
-                  <Image
-                    alt={work.title}
-                    src={work.image}
-                    preview={false}
-                    className={styles.workImage}
-                  />
-                </div>
+                <div 
+                  className={styles.workImageContainer}
+                  style={{ 
+                    backgroundImage: `url(${work.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                ></div>
                 <Title level={4} className={styles.workTitle}>
                   {work.title}
                 </Title>
@@ -134,18 +135,21 @@ const Projects: React.FC = () => {
         open={modalVisible}
         onCancel={() => setModalVisible(false)}
         footer={null}
-        width={700}
+        width={800}
+        bodyStyle={{ maxHeight: '80vh', overflow: 'auto' }}
       >
         {currentProject && (
           <>
-            <div className={styles.modalImageContainer}>
-              <Image
-                alt={currentProject.title}
-                src={currentProject.image}
-                className={styles.modalImage}
-                preview={true}
-              />
-            </div>
+            <div 
+              className={styles.modalImageContainer}
+              style={{ 
+                backgroundImage: `url(${currentProject.image})`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: '#f5f5f5'
+              }}
+            ></div>
             
             <div className={styles.modalTagContainer}>
               <Tag icon={<TeamOutlined />} color="blue">{currentProject.role}</Tag>

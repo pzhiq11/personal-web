@@ -47,8 +47,7 @@
 
 .imageContainer {
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 宽高比 */
+  height: 400px; /* 固定高度 */
   position: relative;
   margin-bottom: 16px;
   border-radius: 8px;
@@ -60,17 +59,6 @@
 .projectCard:hover .imageContainer {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   transform: scale(1.02);
-}
-
-.projectImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: all 0.5s;
 }
 
 .imageOverlay {
@@ -154,23 +142,12 @@
 
 .modalImageContainer {
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 宽高比 */
+  height: 300px; /* 固定高度 */
   position: relative;
   margin-bottom: 24px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modalImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* 保持原始比例 */
-  background-color: #f5f5f5;
 }
 
 .modalTagContainer {
@@ -254,8 +231,7 @@
 
 .workImageContainer {
   width: 100%;
-  height: 0;
-  padding-bottom: 75%; /* 4:3 宽高比 */
+  height: 150px; /* 固定高度 */
   position: relative;
   margin-bottom: 16px;
   border-radius: 8px;
@@ -265,17 +241,6 @@
 
 .workCard:hover .workImageContainer {
   transform: scale(1.05);
-}
-
-.workImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: all 0.5s;
 }
 
 .workTitle {
