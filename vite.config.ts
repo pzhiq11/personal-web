@@ -18,6 +18,8 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
+    // 预渲染
+    // 骨架屏
   ],
   build: {
     minify: "terser", // 使用terser进行更强的压缩
@@ -30,4 +32,4 @@ export default defineConfig({
     reportCompressedSize: false, // 提高构建速度
     chunkSizeWarningLimit: 2000, // 提高警告限制
   },
-} );
+});
