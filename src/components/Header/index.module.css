@@ -176,6 +176,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  z-index: 101;
 }
 
 .menuButton:hover {
@@ -194,43 +195,84 @@
 }
 
 :global(.ant-drawer-title) {
-  color: white;
+  color: white !important;
   font-weight: 600;
   font-size: 18px;
 }
 
 :global(.ant-drawer-close) {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
-:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item) {
-  margin: 10px 16px;
-  border-radius: 8px;
+:global(.ant-drawer-mask) {
+  background-color: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(4px);
+  z-index: 999 !important;
+}
+
+:global(.ant-drawer-header-title) {
+  color: white !important;
+  justify-content: space-between !important;
+  flex-direction: row-reverse !important;
+}
+
+/* 自定义移动端菜单样式 */
+.mobileMenuContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.mobileMenuItem {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  margin: 2px 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mobileMenuItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileMenuItemActive {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  color: #ffffff;
   position: relative;
-  overflow: hidden;
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
 }
 
-:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item-selected) {
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15)) !important;
-}
-
-:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item-selected::before) {
+.mobileMenuItemActive::before {
   content: '';
   position: absolute;
   left: 0;
   top: 15%;
-  width: 3px;
+  width: 4px;
   height: 70%;
   background: linear-gradient(180deg, #3b82f6, #8b5cf6);
   border-radius: 0 3px 3px 0;
 }
 
-:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item .anticon) {
-  font-size: 18px;
-  margin-right: 10px;
+.mobileMenuIcon {
+  margin-right: 16px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+}
+
+.mobileMenuLabel {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.mobileMenuItemActive .mobileMenuIcon,
+.mobileMenuItemActive .mobileMenuLabel {
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -259,7 +301,7 @@
   
   .logoText {
     font-size: 14px !important;
-    max-width: 180px;
+    max-width: 160px;
   }
   
   .avatar {
@@ -268,5 +310,9 @@
     height: 32px !important;
     line-height: 32px !important;
     font-size: 16px !important;
+  }
+  
+  .divider, .logoText span {
+    display: none;
   }
 } 

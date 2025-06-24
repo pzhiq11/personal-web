@@ -28,6 +28,7 @@ const Header: React.FC = () => {
   const [current, setCurrent] = useState(location.pathname === '/' ? 'home' : location.pathname.slice(1));
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 480);
   const [scrolled, setScrolled] = useState(false);
   
   // 当路由变化时更新当前选中菜单项
@@ -40,6 +41,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
+      setIsSmallScreen(window.innerWidth <= 480);
     };
 
     window.addEventListener('resize', handleResize);
@@ -120,17 +122,29 @@ const Header: React.FC = () => {
     setDrawerVisible(false);
   };
 
+  const MobileMenuItem = ({ item, isActive }: { item: MenuItem, isActive: boolean }) => (
+    <div 
+      className={`${styles.mobileMenuItem} ${isActive ? styles.mobileMenuItemActive : ''}`}
+      onClick={() => handleMenuClick({ key: item.key })}
+    >
+      <div className={styles.mobileMenuIcon}>{item.icon}</div>
+      <div className={styles.mobileMenuLabel}>{item.label}</div>
+    </div>
+  );
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.logo} onClick={goHome}>
         <Avatar 
-          size={40} 
+          size={isSmallScreen ? 32 : 40} 
           className={styles.avatar}
         >
           {profile.name.slice(0, 1)}
         </Avatar>
-        <Title level={4} className={styles.logoText}>
-          {profile.name} <span className={styles.divider}>|</span> {profile.title}
+        <Title level={isSmallScreen ? 5 : 4} className={styles.logoText}>
+          {profile.name} 
+          <span className={styles.divider}>|</span> 
+          <span>{profile.title}</span>
         </Title>
       </div>
       
@@ -141,24 +155,39 @@ const Header: React.FC = () => {
             type="text" 
             icon={drawerVisible ? <CloseOutlined /> : <MenuOutlined />} 
             onClick={drawerVisible ? closeDrawer : showDrawer}
+            size={isSmallScreen ? "middle" : "large"}
           />
           <Drawer
             title="导航菜单"
             placement="right"
             onClose={closeDrawer}
             open={drawerVisible}
-            bodyStyle={{ padding: 0 }}
-            width={280}
-            headerStyle={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+            width={isSmallScreen ? "85%" : 280}
+            zIndex={1000}
+            styles={{
+              header: { 
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                background: 'rgb(15, 23, 42)'
+              },
+              body: { 
+                padding: 0, 
+                background: 'rgb(15, 23, 42)',
+                overflow: 'auto'
+              },
+              content: { background: 'rgb(15, 23, 42)' },
+              wrapper: { background: 'rgb(15, 23, 42)' },
+              mask: { backdropFilter: 'blur(4px)' }
+            }}
           >
-            <Menu
-              theme="dark"
-              mode="vertical"
-              selectedKeys={[current]}
-              items={menuItems}
-              onClick={handleMenuClick}
-              style={{ background: 'transparent', borderRight: 'none' }}
-            />
+            <div className={styles.mobileMenuContainer}>
+              {menuItems.map(item => (
+                <MobileMenuItem 
+                  key={item.key} 
+                  item={item} 
+                  isActive={current === item.key}
+                />
+              ))}
+            </div>
           </Drawer>
         </>
       ) : (
