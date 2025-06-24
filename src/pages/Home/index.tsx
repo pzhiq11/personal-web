@@ -1,6 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Typography, Row, Col, Button, Space, Avatar, Card } from "antd";
-import { GithubOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { 
+  GithubOutlined, 
+  MailOutlined, 
+  PhoneOutlined, 
+  ToolOutlined,
+  HistoryOutlined,
+  ProjectOutlined,
+  AppstoreOutlined,
+  ContactsOutlined,
+} from "@ant-design/icons";
 import profile from "../../configs/profile";
 import { coreSkills } from "../../configs/profile";
 import styles from "./index.module.css";
@@ -9,6 +18,39 @@ const { Title, Paragraph, Text } = Typography;
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+
+  const navLinks = [
+    {
+      title: "专业技能",
+      icon: <ToolOutlined />,
+      path: "/skills",
+      color: "#1890ff",
+    },
+    {
+      title: "工作经历",
+      icon: <HistoryOutlined />,
+      path: "/experience",
+      color: "#52c41a",
+    },
+    {
+      title: "项目经验",
+      icon: <ProjectOutlined />,
+      path: "/projects",
+      color: "#722ed1",
+    },
+    {
+      title: "个人作品",
+      icon: <AppstoreOutlined />,
+      path: "/works",
+      color: "#eb2f96",
+    },
+    {
+      title: "联系方式",
+      icon: <ContactsOutlined />,
+      path: "/contact",
+      color: "#fa8c16",
+    },
+  ];
 
   return (
     <>
@@ -122,6 +164,31 @@ const Home: React.FC = () => {
           </Card>
         </Col>
       </Row>
+
+      {/* 导航卡片 */}
+      <div className={styles.navSection}>
+        <Title level={2} className={styles.navTitle}>
+          了解更多
+        </Title>
+        <Row gutter={[24, 24]}>
+          {navLinks.map((link, index) => (
+            <Col xs={24} sm={12} md={8} lg={4.8} key={index}>
+              <Card 
+                className={styles.navCard} 
+                onClick={() => navigate(link.path)}
+                style={{ borderColor: link.color }}
+              >
+                <div className={styles.navIcon} style={{ color: link.color }}>
+                  {link.icon}
+                </div>
+                <Title level={4} className={styles.navCardTitle}>
+                  {link.title}
+                </Title>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
     </>
   );
 };

@@ -1,12 +1,15 @@
 .header {
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  background: linear-gradient(135deg, #001529 0%, #003a70 100%);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.85);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: all 0.3s;
 }
@@ -14,59 +17,54 @@
 .logo {
   display: flex;
   align-items: center;
-  margin-right: 30px;
   cursor: pointer;
 }
 
-.logoText {
-  margin: 0;
-  color: #fff;
-  background: linear-gradient(90deg, #fff 0%, #d0e6ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  transition: all 0.3s;
-}
-
-.logoText:hover {
-  transform: scale(1.02);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
 .avatar {
-  margin-right: 16px;
   background: linear-gradient(135deg, #1890ff 0%, #722ed1 100%);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-right: 12px;
   transition: all 0.3s;
 }
 
-.avatar:hover {
-  transform: rotate(5deg) scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+.logo:hover .avatar {
+  transform: rotate(360deg);
 }
 
-/* 动画效果 */
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px rgba(24, 144, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(24, 144, 255, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(24, 144, 255, 0.5);
-  }
+.logoText {
+  color: white !important;
+  margin: 0 !important;
+  transition: all 0.3s;
 }
 
-/* 响应式样式 */
+.logo:hover .logoText {
+  color: #1890ff !important;
+}
+
+.menuButton {
+  color: white !important;
+  font-size: 18px !important;
+}
+
 @media (max-width: 768px) {
-  .logo {
-    margin-right: 10px;
+  .header {
+    padding: 0 10px;
   }
 
   .logoText {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText {
+    font-size: 14px !important;
+  }
+  
+  .avatar {
+    margin-right: 8px;
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
     font-size: 16px !important;
   }
 } 

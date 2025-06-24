@@ -3,13 +3,12 @@ import { Typography, Row, Col, Card, Tag, Button, Modal } from 'antd';
 import {
   ProjectOutlined,
   EyeOutlined,
-  RocketOutlined,
   CalendarOutlined,
   TeamOutlined,
   EnvironmentOutlined,
 } from '@ant-design/icons';
-import { projects, personalWorks } from '../../configs/projects';
-import type { ProjectType, WorkType } from '../../types';
+import { projects } from '../../configs/projects';
+import type { ProjectType } from '../../types';
 import styles from './index.module.css';
 
 const { Title, Paragraph } = Typography;
@@ -82,52 +81,6 @@ const Projects: React.FC = () => {
           </Col>
         ))}
       </Row>
-
-      {/* 个人作品 */}
-      <div className={styles.worksSection}>
-        <Title level={2} className={styles.worksSectionTitle}>个人作品</Title>
-        <Paragraph className={styles.worksDescription}>
-          以下是我的一些个人作品和开源项目，展示了我的技术能力和创造力。
-        </Paragraph>
-
-        <Row gutter={[24, 24]}>
-          {personalWorks.map((work: WorkType) => (
-            <Col xs={24} md={8} key={work.id}>
-              <Card className={styles.workCard} bordered={false}>
-                <div 
-                  className={styles.workImageContainer}
-                  style={{ 
-                    backgroundImage: `url(${work.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                ></div>
-                <Title level={4} className={styles.workTitle}>
-                  {work.title}
-                </Title>
-                <Paragraph className={styles.workDescription}>
-                  {work.description}
-                </Paragraph>
-                <div className={styles.tagContainer}>
-                  {work.tags.map(tag => (
-                    <Tag key={tag} className={styles.workTag}>
-                      {tag}
-                    </Tag>
-                  ))}
-                </div>
-                <Button 
-                  type="primary" 
-                  onClick={() => window.open(work.link, '_blank')}
-                  className={styles.visitButton}
-                  icon={<RocketOutlined />}
-                >
-                  访问项目
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
 
       {/* 项目详情弹窗 */}
       <Modal
