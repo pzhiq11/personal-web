@@ -1,0 +1,161 @@
+.container {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  margin-bottom: 24px !important;
+  background: linear-gradient(90deg, #1890ff, #722ed1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold !important;
+  display: inline-block;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #5a5a5a;
+  line-height: 1.8;
+}
+
+.experienceCard {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  background: #fff;
+  padding: 24px;
+  border-left: 4px solid #1890ff;
+  overflow: hidden;
+  position: relative;
+}
+
+.experienceCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.experienceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(24, 144, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.jobTitle {
+  margin-bottom: 8px !important;
+  color: #1890ff;
+  font-weight: bold;
+}
+
+.companyInfo {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  color: #5a5a5a;
+}
+
+.infoIcon {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+.responsibilityTitle {
+  font-weight: bold;
+  margin-bottom: 16px !important;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.responsibilityList {
+  margin-bottom: 16px;
+}
+
+.responsibilityItem {
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 2px solid #1890ff;
+  transition: all 0.3s;
+}
+
+.responsibilityItem:hover {
+  border-left: 2px solid #722ed1;
+  transform: translateX(5px);
+}
+
+.responsibilityHeader {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.responsibilityText {
+  color: #5a5a5a;
+  line-height: 1.8;
+}
+
+.tagContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  margin-right: 8px;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+}
+
+.educationCard {
+  margin-top: 32px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #722ed1;
+  transition: all 0.3s;
+}
+
+.educationCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.educationTitle {
+  margin-bottom: 16px !important;
+  color: #722ed1;
+  font-weight: bold;
+}
+
+.educationText {
+  color: #5a5a5a;
+  line-height: 1.8;
+} 

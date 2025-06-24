@@ -1,0 +1,108 @@
+/* Ant Design CSS 在index.html中通过CDN引入 */
+
+/* 全局基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #f0f2f5;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1890ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #096dd9;
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 修改antd全局样式 */
+.ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.ant-tag {
+  margin-bottom: 8px;
+}
+
+.ant-card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ant-card-hoverable:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.09);
+}
+
+/* 字体大小 */
+h1.ant-typography {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h2.ant-typography {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h3.ant-typography {
+  font-size: 20px;
+  font-weight: 500;
+}

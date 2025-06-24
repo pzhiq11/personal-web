@@ -1,0 +1,38 @@
+.footer {
+  text-align: center;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef, #f8f9fa);
+  padding: 24px 50px;
+  color: #5a5a5a;
+  border-top: 1px solid #eaeaea;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.link {
+  margin: 0 10px;
+  color: #1890ff;
+  transition: all 0.3s;
+}
+
+.link:hover {
+  color: #096dd9;
+  transform: translateY(-2px);
+}
+
+.copyright {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #1890ff, #096dd9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+} 
