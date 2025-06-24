@@ -8,7 +8,8 @@ export const profile = {
   education: "统招本科(四川大学锦江学院)",
   phone: "15775882994",
   email: "faith.manba1@gmail.com",
-  github: "",
+  github: "https://github.com/pzhiq11",
+  gitee: "https://gitee.com/pzhiq",
   introduction: `具有良好的团队协作能力和沟通能力，也能够独立承担所负责需求迭代准时交付。\n
   具有团队合作精神，具有很强的责任心，具有一定的抗压性，积极主动，对开发工作有较高的热情。\n
   具有较强的学习能力和自我驱动力，能够持续关注前端技术发展趋势，不断提升自身技术水平。`,

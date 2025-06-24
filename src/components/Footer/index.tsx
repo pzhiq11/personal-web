@@ -1,5 +1,5 @@
 import { Space } from "antd";
-import { GithubOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import {  MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import profile from "../../configs/profile";
 import styles from "./index.module.css";
 
@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.links}>
         <Space size="large">
-          {profile.github && (
+          {/* {profile.github && (
             <a
               href={profile.github}
               target="_blank"
@@ -19,7 +19,8 @@ const Footer: React.FC = () => {
             >
               <GithubOutlined /> GitHub
             </a>
-          )}
+          )
+          } */}
           <a href={`tel:${profile.phone}`} className={styles.link}>
             <PhoneOutlined /> 电话
           </a>

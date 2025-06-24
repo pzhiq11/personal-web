@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Typography, Row, Col, Button, Space, Avatar, Card } from "antd";
-import { 
-  GithubOutlined, 
-  MailOutlined, 
-  PhoneOutlined, 
+import {
+  GithubOutlined,
+  MailOutlined,
+  PhoneOutlined,
   ToolOutlined,
   HistoryOutlined,
   ProjectOutlined,
   AppstoreOutlined,
   ContactsOutlined,
+  GitlabFilled,
 } from "@ant-design/icons";
 import profile from "../../configs/profile";
 import { coreSkills } from "../../configs/profile";
@@ -115,6 +116,19 @@ const Home: React.FC = () => {
                   {profile.email}
                 </Text>
               </div>
+              {profile?.gitee && (
+                <div className={styles.contactItem}>
+                  <GitlabFilled className={styles.contactIcon} />
+                  <a
+                    href={profile.gitee}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.copyableText}
+                  >
+                    Gitee 主页
+                  </a>
+                </div>
+              )}
               {profile?.github && (
                 <div className={styles.contactItem}>
                   <GithubOutlined className={styles.contactIcon} />
@@ -173,8 +187,8 @@ const Home: React.FC = () => {
         <Row gutter={[24, 24]}>
           {navLinks.map((link, index) => (
             <Col xs={24} sm={12} md={8} lg={4.8} key={index}>
-              <Card 
-                className={styles.navCard} 
+              <Card
+                className={styles.navCard}
                 onClick={() => navigate(link.path)}
                 style={{ borderColor: link.color }}
               >

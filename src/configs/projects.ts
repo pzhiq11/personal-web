@@ -38,7 +38,7 @@ export const projects = [
     location: "杭州",
     period: "2024-12 ~ 2025-02",
     tech: "Ice+ React + Eva.js+ TypeScript",
-    image: "https://qiniu.zhiji-pzhiq.top/uploads/1750749091017-16k48d.png",
+    image: "https://qiniu.zhiji-pzhiq.top/uploads/1750753281151-80pxkg.png",
     background:
       "2025年春节，作为央视春晚合作互动技术团队成员，预计峰值超过5000万并发的线上互动游戏开发。项目需在春晚直播期间实现全国观众实时互动，届时会涌入大批流量，对首屏加载速度、资源加载策略及游戏模块性能有极高要求，需要基于之前技术方案进行优化提升，保障稳定性，同时丰富工程化应用场景。",
     responsibilities: [

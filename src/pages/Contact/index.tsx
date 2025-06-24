@@ -6,6 +6,7 @@ import {
   GithubOutlined,
   SendOutlined,
   UserOutlined,
+  GitlabFilled,
 } from "@ant-design/icons";
 import profile from "../../configs/profile";
 import type { ContactFormValues } from "../../types";
@@ -39,7 +40,7 @@ const Contact: React.FC = () => {
 
       <div className={styles.contactSection}>
         <Row gutter={[24, 24]}>
-          <Col xs={24} md={8}>
+          <Col xs={24} md={6}>
             <Card className={styles.contactCard}>
               <div className={styles.iconWrapper}>
                 <PhoneOutlined />
@@ -61,7 +62,7 @@ const Contact: React.FC = () => {
             </Card>
           </Col>
 
-          <Col xs={24} md={8}>
+          <Col xs={24} md={6}>
             <Card className={styles.contactCard}>
               <div className={styles.iconWrapper}>
                 <MailOutlined />
@@ -84,7 +85,32 @@ const Contact: React.FC = () => {
           </Col>
 
           {profile.github && (
-            <Col xs={24} md={8}>
+            <Col xs={24} md={6}>
+              <Card className={styles.contactCard}>
+                <div className={styles.iconWrapper}>
+                  <GitlabFilled />
+                </div>
+                <Title level={4} className={styles.cardTitle}>
+                  Gitee
+                </Title>
+                <Paragraph className={styles.contactValue}>
+                  <Text>个人项目仓库</Text>
+                </Paragraph>
+                <Button
+                  type="primary"
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactButton}
+                  icon={<GithubOutlined />}
+                >
+                  访问Gitee
+                </Button>
+              </Card>
+            </Col>
+          )}
+          {profile.gitee && (
+            <Col xs={24} md={6}>
               <Card className={styles.contactCard}>
                 <div className={styles.iconWrapper}>
                   <GithubOutlined />

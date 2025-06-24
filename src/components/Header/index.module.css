@@ -7,57 +7,259 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  height: 64px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s;
+  padding: 0 30px;
+  height: 70px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 65px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
 }
 
 .avatar {
-  background: linear-gradient(135deg, #1890ff 0%, #722ed1 100%);
-  margin-right: 12px;
-  transition: all 0.3s;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  margin-right: 16px;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
 }
 
 .logo:hover .avatar {
-  transform: rotate(360deg);
+  transform: rotate(10deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .logoText {
   color: white !important;
   margin: 0 !important;
-  transition: all 0.3s;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  background: linear-gradient(to right, #ffffff, #e2e8f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.divider {
+  display: inline-block;
+  margin: 0 6px;
+  opacity: 0.6;
+  color: #a0aec0;
+  background: linear-gradient(to right, #a0aec0, #cbd5e0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo:hover .logoText {
-  color: #1890ff !important;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(3px);
 }
 
+/* 导航菜单样式 */
+:global(.ant-menu.ant-menu-dark) {
+  background: transparent !important;
+  border: none !important;
+  gap: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+:global(.ant-menu-dark .ant-menu-item) {
+  border-radius: 6px;
+  margin: 0 2px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  font-weight: 500;
+  height: 45px;
+  line-height: 45px;
+}
+
+:global(.ant-menu-dark .ant-menu-item:hover) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+:global(.ant-menu-dark .ant-menu-item-selected) {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+:global(.ant-menu-dark .ant-menu-item-selected::before) {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 3px 3px 0 0;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+  }
+}
+
+:global(.ant-menu-dark .ant-menu-item-selected::after) {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+:global(.ant-menu-dark .ant-menu-item .anticon) {
+  font-size: 16px;
+  position: relative;
+  top: 1px;
+  margin-right: 6px;
+  transition: all 0.3s ease;
+}
+
+:global(.ant-menu-dark .ant-menu-item:hover .anticon) {
+  color: #3b82f6;
+  transform: scale(1.2);
+}
+
+/* 移动端菜单按钮 */
 .menuButton {
   color: white !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.menuButton:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: rotate(5deg);
+}
+
+/* 抽屉样式自定义 */
+:global(.ant-drawer-content) {
+  background: rgb(15, 23, 42);
+}
+
+:global(.ant-drawer-header) {
+  background: rgb(15, 23, 42);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+:global(.ant-drawer-title) {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+:global(.ant-drawer-close) {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item) {
+  margin: 10px 16px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+}
+
+:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item-selected) {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15)) !important;
+}
+
+:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item-selected::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  width: 3px;
+  height: 70%;
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 0 3px 3px 0;
+}
+
+:global(.ant-menu-vertical.ant-menu-dark .ant-menu-item .anticon) {
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: 0 10px;
+    padding: 0 15px;
+    height: 60px;
   }
-
+  
+  .scrolled {
+    height: 55px;
+  }
+  
   .logoText {
     font-size: 16px !important;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 @media (max-width: 480px) {
+  .header {
+    padding: 0 10px;
+  }
+  
   .logoText {
     font-size: 14px !important;
+    max-width: 180px;
   }
   
   .avatar {

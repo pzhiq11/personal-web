@@ -9,6 +9,7 @@ import {
   ContactsOutlined,
   AppstoreOutlined,
   MenuOutlined,
+  CloseOutlined,
 } from '@ant-design/icons';
 import profile from '../../configs/profile';
 import styles from './index.module.css';
@@ -27,6 +28,7 @@ const Header: React.FC = () => {
   const [current, setCurrent] = useState(location.pathname === '/' ? 'home' : location.pathname.slice(1));
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [scrolled, setScrolled] = useState(false);
   
   // 当路由变化时更新当前选中菜单项
   useEffect(() => {
@@ -43,6 +45,22 @@ const Header: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  // 监听滚动事件，改变导航栏样式
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -103,7 +121,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.logo} onClick={goHome}>
         <Avatar 
           size={40} 
@@ -112,7 +130,7 @@ const Header: React.FC = () => {
           {profile.name.slice(0, 1)}
         </Avatar>
         <Title level={4} className={styles.logoText}>
-          {profile.name} | {profile.title}
+          {profile.name} <span className={styles.divider}>|</span> {profile.title}
         </Title>
       </div>
       
@@ -121,8 +139,8 @@ const Header: React.FC = () => {
           <Button 
             className={styles.menuButton} 
             type="text" 
-            icon={<MenuOutlined />} 
-            onClick={showDrawer}
+            icon={drawerVisible ? <CloseOutlined /> : <MenuOutlined />} 
+            onClick={drawerVisible ? closeDrawer : showDrawer}
           />
           <Drawer
             title="导航菜单"
@@ -130,14 +148,16 @@ const Header: React.FC = () => {
             onClose={closeDrawer}
             open={drawerVisible}
             bodyStyle={{ padding: 0 }}
+            width={280}
+            headerStyle={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
           >
             <Menu
-              theme="light"
+              theme="dark"
               mode="vertical"
               selectedKeys={[current]}
               items={menuItems}
               onClick={handleMenuClick}
-              style={{ borderRight: 'none' }}
+              style={{ background: 'transparent', borderRight: 'none' }}
             />
           </Drawer>
         </>
