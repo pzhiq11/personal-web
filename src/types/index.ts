@@ -44,7 +44,8 @@ export interface WorkExperience {
 // 技能类型定义
 export interface SkillLevel {
   name: string;
-  percent: number;
+  level: string;
+  description: string;
 }
 
 export interface SkillCard {

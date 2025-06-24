@@ -34,5 +34,8 @@ export const workExperience = [
 
 export const education = {
   degree: '统招本科',
+  school: '四川大学锦江学院',
+  major: '软件工程',
+  period: '2018-09 至 2022-06',
   description: '专业相关知识扎实，在校期间积极参与专业相关学习和实践活动，为后续的职业发展打下了良好基础。'
 }; 

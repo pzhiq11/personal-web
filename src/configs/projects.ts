@@ -10,7 +10,7 @@ export const projects = [
     location: '杭州',
     period: '2022.11.11 / 2023.11.11',
     tech: 'Rax + React + Eva.js+ TypeScript',
-    image: defaultImg,
+    image: 'https://qiniu.zhiji-pzhiq.top/uploads/1750749083934-fboo68.png',
     background: '承接年度最大流量活动，在更复杂的的素材场景下结合以往经验为用户带来接近原生的应用体验。',
     responsibilities: [
       '负责主互动主角信息、镜头及遥感控制组件。',
@@ -39,7 +39,7 @@ export const projects = [
     location: '杭州',
     period: '2024-12 ~ 2025-02',
     tech: 'Ice+ React + Eva.js+ TypeScript',
-    image: defaultImg,
+    image: 'https://qiniu.zhiji-pzhiq.top/uploads/1750749091017-16k48d.png',
     background: '2025年春节，作为央视春晚合作互动技术团队成员，预计峰值超过5000万并发的线上互动游戏开发。项目需在春晚直播期间实现全国观众实时互动，届时会涌入大批流量，对首屏加载速度、资源加载策略及游戏模块性能有极高要求，需要基于之前技术方案进行优化提升，保障稳定性，同时丰富工程化应用场景。',
     responsibilities: [
       '负责游戏模块web框架页面插件预加载。',
@@ -67,7 +67,7 @@ export const projects = [
     location: '成都',
     period: '2024-09 ~ 2024-11',
     tech: 'CocosCreator + TypeScript + Node + webSocket + Worker',
-    image: defaultImg,
+    image: 'https://qiniu.zhiji-pzhiq.top/uploads/1750749097032-dzwjcv.png',
     background: '2024年主导基于CocosCreator抖音弹幕小游戏研发。项目需支撑单房间1000人+同时在线，实现弹幕礼物高并发处理、实时交互及多端打包，面临低端机渲染卡顿、WebSocket断连重连机制、跨线程通信等核心挑战。',
     responsibilities: [
       '主导游戏基础框架搭建及逻辑架构设计。',
@@ -98,7 +98,7 @@ export const projects = [
     location: '成都',
     period: '2022-2025',
     tech: '多种技术栈',
-    image: defaultImg,
+    image: 'https://qiniu.zhiji-pzhiq.top/uploads/1750749060243-e8b7tp.jpg',
     background: '参与多个互联网项目的开发与维护工作',
     responsibilities: [
       '参与2022芭芭池塘（负责0-1主逻辑）、2022世界杯、2023综艺互动（眼力大师，负责主场景逻辑）、芭芭农场/阳光农场优化迭代、脑力达人（技术栈：UE5，项目对接人，0-1游戏逻辑开发）等等。'

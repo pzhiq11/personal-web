@@ -35,12 +35,15 @@ const Projects: React.FC = () => {
         {projects.map((project) => (
           <Col xs={24} md={12} key={project.id}>
             <Card className={styles.projectCard} bordered={false}>
-              <Image
-                alt={project.title}
-                src={project.image}
-                preview={false}
-                className={styles.projectImage}
-              />
+              <div className={styles.imageContainer}>
+                <Image
+                  alt={project.title}
+                  src={project.image}
+                  preview={false}
+                  className={styles.projectImage}
+                />
+                <div className={styles.imageOverlay} />
+              </div>
               <Title level={4} className={styles.projectTitle}>
                 {project.title}
               </Title>
@@ -90,12 +93,14 @@ const Projects: React.FC = () => {
           {personalWorks.map((work: WorkType) => (
             <Col xs={24} md={8} key={work.id}>
               <Card className={styles.workCard} bordered={false}>
-                <Image
-                  alt={work.title}
-                  src={work.image}
-                  preview={false}
-                  className={styles.workImage}
-                />
+                <div className={styles.workImageContainer}>
+                  <Image
+                    alt={work.title}
+                    src={work.image}
+                    preview={false}
+                    className={styles.workImage}
+                  />
+                </div>
                 <Title level={4} className={styles.workTitle}>
                   {work.title}
                 </Title>
@@ -133,11 +138,14 @@ const Projects: React.FC = () => {
       >
         {currentProject && (
           <>
-            <Image
-              alt={currentProject.title}
-              src={currentProject.image}
-              className={styles.modalImage}
-            />
+            <div className={styles.modalImageContainer}>
+              <Image
+                alt={currentProject.title}
+                src={currentProject.image}
+                className={styles.modalImage}
+                preview={true}
+              />
+            </div>
             
             <div className={styles.modalTagContainer}>
               <Tag icon={<TeamOutlined />} color="blue">{currentProject.role}</Tag>

@@ -1,4 +1,4 @@
-import { Typography, Card, Row, Col, Progress } from 'antd';
+import { Typography, Card, Row, Col } from 'antd';
 import {
   Html5Outlined,
   DeploymentUnitOutlined,
@@ -33,6 +33,23 @@ const renderIcon = (iconName: string) => {
   }
 };
 
+// 根据技能等级返回对应的CSS类名
+const getLevelClassName = (level: string): string => {
+  switch (level) {
+    case '精通':
+      return styles.levelMaster;
+    case '熟练':
+      return styles.levelProficient;
+    case '掌握':
+      return styles.levelCompetent;
+    case '了解':
+      return styles.levelFamiliar;
+    case '入门':
+    default:
+      return styles.levelBasic;
+  }
+};
+
 const Skills: React.FC = () => {
   return (
     <div className={styles.container}>
@@ -59,34 +76,36 @@ const Skills: React.FC = () => {
 
       <div className={styles.section}>
         <Title level={3} className={styles.sectionTitle}>前端技能评估</Title>
-        <Row gutter={[16, 16]}>
-          {frontendSkills.map((skill: SkillLevel) => (
-            <Col xs={24} sm={12} key={skill.name}>
-              <Title level={5} className={styles.progressTitle}>{skill.name}</Title>
-              <Progress 
-                percent={skill.percent} 
-                status="active" 
-                className={`${styles.progress} ${styles.progressFrontend}`}
-              />
-            </Col>
-          ))}
-        </Row>
+        {frontendSkills.map((skill: SkillLevel) => (
+          <div key={skill.name} className={styles.skillItem}>
+            <div className={styles.skillHeader}>
+              <Title level={5} className={styles.skillName}>{skill.name}</Title>
+              <span className={`${styles.skillLevel} ${getLevelClassName(skill.level)}`}>
+                {skill.level}
+              </span>
+            </div>
+            <Paragraph className={styles.skillDescription}>
+              {skill.description}
+            </Paragraph>
+          </div>
+        ))}
       </div>
 
       <div className={styles.section}>
         <Title level={3} className={styles.sectionTitle}>游戏开发技能评估</Title>
-        <Row gutter={[16, 16]}>
-          {gameDevSkills.map((skill: SkillLevel) => (
-            <Col xs={24} sm={12} key={skill.name}>
-              <Title level={5} className={styles.progressTitle}>{skill.name}</Title>
-              <Progress 
-                percent={skill.percent} 
-                status="active" 
-                className={`${styles.progress} ${styles.progressGame}`}
-              />
-            </Col>
-          ))}
-        </Row>
+        {gameDevSkills.map((skill: SkillLevel) => (
+          <div key={skill.name} className={`${styles.skillItem} ${styles.gameSkillItem}`}>
+            <div className={styles.skillHeader}>
+              <Title level={5} className={styles.skillName}>{skill.name}</Title>
+              <span className={`${styles.skillLevel} ${getLevelClassName(skill.level)}`}>
+                {skill.level}
+              </span>
+            </div>
+            <Paragraph className={styles.skillDescription}>
+              {skill.description}
+            </Paragraph>
+          </div>
+        ))}
       </div>
     </div>
   );

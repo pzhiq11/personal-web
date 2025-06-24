@@ -56,9 +56,9 @@
   transition: all 0.3s;
 }
 
-.skillCard:hover .iconWrapper {
+/* .skillCard:hover .iconWrapper {
   transform: scale(1.2);
-}
+} */
 
 .cardTitle {
   margin-bottom: 16px !important;
@@ -88,19 +88,87 @@
   display: inline-block;
 }
 
-.progressTitle {
-  margin-bottom: 8px !important;
+.skillItem {
+  margin-bottom: 24px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: all 0.3s;
+  border-left: 4px solid #1890ff;
+}
+
+.skillItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.skillName {
+  font-weight: bold;
+  margin: 0 !important;
   color: #333;
 }
 
-.progress {
-  margin-bottom: 16px;
+.skillLevel {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
 }
 
-.progressFrontend :global(.ant-progress-bg) {
+.skillDescription {
+  color: #5a5a5a;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 不同技能等级的样式 */
+.levelMaster {
+  background: linear-gradient(90deg, #52c41a, #389e0d);
+}
+
+.levelProficient {
   background: linear-gradient(90deg, #1890ff, #096dd9);
 }
 
-.progressGame :global(.ant-progress-bg) {
+.levelCompetent {
   background: linear-gradient(90deg, #722ed1, #531dab);
-} 
+}
+
+.levelFamiliar {
+  background: linear-gradient(90deg, #fa8c16, #d46b08);
+}
+
+.levelBasic {
+  background: linear-gradient(90deg, #f5222d, #cf1322);
+}
+
+.gameSkillItem {
+  border-left-color: #722ed1;
+}
+
+.gameSkillItem .skillLevel.levelProficient {
+  background: linear-gradient(90deg, #722ed1, #531dab);
+}
+
+.gameSkillItem .skillLevel.levelCompetent {
+  background: linear-gradient(90deg, #fa8c16, #d46b08);
+}
+
+.gameSkillItem .skillLevel.levelFamiliar {
+  background: linear-gradient(90deg, #fa8c16, #d46b08);
+}
+
+.gameSkillItem .skillLevel.levelBasic {
+  background: linear-gradient(90deg, #f5222d, #cf1322);
+}
+
+ 

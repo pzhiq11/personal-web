@@ -60,9 +60,9 @@
   transition: all 0.3s;
 }
 
-.contactCard:hover .iconWrapper {
+/* .contactCard:hover .iconWrapper {
   transform: scale(1.2);
-}
+} */
 
 .cardTitle {
   margin-bottom: 16px !important;

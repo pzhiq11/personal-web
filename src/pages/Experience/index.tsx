@@ -1,8 +1,12 @@
-import { Typography, Tag } from 'antd';
-import { ClockCircleOutlined, EnvironmentOutlined, TeamOutlined } from '@ant-design/icons';
-import { workExperience, education } from '../../configs/experience';
-import type { WorkExperience, Responsibility } from '../../types';
-import styles from './index.module.css';
+import { Typography, Tag } from "antd";
+import {
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  TeamOutlined,
+} from "@ant-design/icons";
+import { workExperience, education } from "../../configs/experience";
+import type { WorkExperience, Responsibility } from "../../types";
+import styles from "./index.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -17,7 +21,9 @@ const Experience: React.FC = () => {
       {/* 工作经历 */}
       {workExperience.map((experience: WorkExperience) => (
         <div key={experience.id} className={styles.experienceCard}>
-          <Title level={4} className={styles.jobTitle}>{experience.position}</Title>
+          <Title level={4} className={styles.jobTitle}>
+            {experience.position}
+          </Title>
           <div className={styles.companyInfo}>
             <div className={styles.infoItem}>
               <TeamOutlined className={styles.infoIcon} />
@@ -25,7 +31,9 @@ const Experience: React.FC = () => {
             </div>
             <div className={styles.infoItem}>
               <EnvironmentOutlined className={styles.infoIcon} />
-              <Text>{experience.department} / {experience.location}</Text>
+              <Text>
+                {experience.department} / {experience.location}
+              </Text>
             </div>
             <div className={styles.infoItem}>
               <ClockCircleOutlined className={styles.infoIcon} />
@@ -33,14 +41,22 @@ const Experience: React.FC = () => {
             </div>
           </div>
 
-          <Title level={5} className={styles.responsibilityTitle}>工作内容</Title>
+          <Title level={5} className={styles.responsibilityTitle}>
+            工作内容
+          </Title>
           <div className={styles.responsibilityList}>
-            {experience.responsibilities.map((responsibility: Responsibility, index: number) => (
-              <div key={index} className={styles.responsibilityItem}>
-                <div className={styles.responsibilityHeader}>{responsibility.title}</div>
-                <div className={styles.responsibilityText}>{responsibility.description}</div>
-              </div>
-            ))}
+            {experience.responsibilities.map(
+              (responsibility: Responsibility, index: number) => (
+                <div key={index} className={styles.responsibilityItem}>
+                  <div className={styles.responsibilityHeader}>
+                    {responsibility.title}
+                  </div>
+                  <div className={styles.responsibilityText}>
+                    {responsibility.description}
+                  </div>
+                </div>
+              )
+            )}
           </div>
 
           <div className={styles.tagContainer}>
@@ -55,7 +71,15 @@ const Experience: React.FC = () => {
 
       {/* 教育经历 */}
       <div className={styles.educationCard}>
-        <Title level={4} className={styles.educationTitle}>{education.degree}</Title>
+        <Title level={4} className={styles.educationTitle}>
+          {education.school}{" "}
+        </Title>
+        <Title level={4} className={styles.educationTitle}>
+          {education.major} / {education.degree}
+        </Title>
+        <Title level={4} className={styles.educationTitle}>
+          {education.period}
+        </Title>
         <Paragraph className={styles.educationText}>
           {education.description}
         </Paragraph>
@@ -64,4 +88,4 @@ const Experience: React.FC = () => {
   );
 };
 
-export default Experience; 
+export default Experience;

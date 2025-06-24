@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { Typography, Row, Col, Button, Space, Avatar, Card } from 'antd';
-import { GithubOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
-import profile from '../../configs/profile';
-import { coreSkills } from '../../configs/profile';
-import styles from './index.module.css';
+import { useNavigate } from "react-router-dom";
+import { Typography, Row, Col, Button, Space, Avatar, Card } from "antd";
+import { GithubOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import profile from "../../configs/profile";
+import { coreSkills } from "../../configs/profile";
+import styles from "./index.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -23,17 +23,17 @@ const Home: React.FC = () => {
         <Paragraph className={styles.infoText}>
           {profile.experience} | {profile.location} | {profile.education}
         </Paragraph>
-        <Space size="large" wrap style={{ justifyContent: 'center' }}>
+        <Space size="large" wrap style={{ justifyContent: "center" }}>
           <Button
             type="primary"
             className={`${styles.actionButton} ${styles.primaryButton}`}
-            onClick={() => navigate('/projects')}
+            onClick={() => navigate("/projects")}
           >
             查看项目
           </Button>
           <Button
             className={styles.actionButton}
-            onClick={() => navigate('/contact')}
+            onClick={() => navigate("/contact")}
           >
             联系我
           </Button>
@@ -41,43 +41,60 @@ const Home: React.FC = () => {
       </div>
 
       <div className={styles.introSection}>
-        <Title level={2} className={styles.introTitle}>个人简介</Title>
+        <Title level={2} className={styles.introTitle}>
+          个人简介
+        </Title>
         <Paragraph className={styles.introText}>
-          {profile.introduction}
+          {profile.introduction.split("\n").map((item, index) => (
+            <span key={index}>
+              {item}
+              <br />
+            </span>
+          ))}
         </Paragraph>
       </div>
 
       <Row gutter={[24, 24]}>
         <Col xs={24} md={8}>
           <Card className={styles.infoCard}>
-            <Title level={3} className={styles.infoCardTitle}>联系方式</Title>
-            <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+            <Title level={3} className={styles.infoCardTitle}>
+              联系方式
+            </Title>
+            <Space direction="vertical" size="middle" style={{ width: "100%" }}>
               <div className={styles.contactItem}>
                 <PhoneOutlined className={styles.contactIcon} />
-                <Text copyable className={styles.copyableText}>{profile.phone}</Text>
+                <Text copyable className={styles.copyableText}>
+                  {profile.phone}
+                </Text>
               </div>
               <div className={styles.contactItem}>
                 <MailOutlined className={styles.contactIcon} />
-                <Text copyable className={styles.copyableText}>{profile.email}</Text>
+                <Text copyable className={styles.copyableText}>
+                  {profile.email}
+                </Text>
               </div>
-              <div className={styles.contactItem}>
-                <GithubOutlined className={styles.contactIcon} />
-                <a 
-                  href={profile.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={styles.copyableText}
-                >
-                  Github 主页
-                </a>
-              </div>
+              {profile?.github && (
+                <div className={styles.contactItem}>
+                  <GithubOutlined className={styles.contactIcon} />
+                  <a
+                    href={profile.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.copyableText}
+                  >
+                    Github 主页
+                  </a>
+                </div>
+              )}
             </Space>
           </Card>
         </Col>
         <Col xs={24} md={8}>
           <Card className={styles.infoCard}>
-            <Title level={3} className={styles.infoCardTitle}>求职意向</Title>
-            <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+            <Title level={3} className={styles.infoCardTitle}>
+              求职意向
+            </Title>
+            <Space direction="vertical" size="middle" style={{ width: "100%" }}>
               <div>
                 <Text strong>岗位：</Text> {profile.title}
               </div>
@@ -92,7 +109,9 @@ const Home: React.FC = () => {
         </Col>
         <Col xs={24} md={8}>
           <Card className={styles.infoCard}>
-            <Title level={3} className={styles.infoCardTitle}>核心技能</Title>
+            <Title level={3} className={styles.infoCardTitle}>
+              核心技能
+            </Title>
             <ul className={styles.skillList}>
               {coreSkills.map((skill, index) => (
                 <li key={index} className={styles.skillItem}>
@@ -107,4 +126,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home; 
+export default Home;
