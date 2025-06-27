@@ -2,40 +2,59 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
-import { cdnInjectPlugin } from "./plugin/cdnInjectPlugin";
-
 // https://vite.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const isProd = mode === 'production' && command === 'build';
-  
-  return {
-    plugins: [
-      react(),
-      isProd && cdnInjectPlugin(),
-      // 启用 Gzip/Brotli 压缩
-      viteCompression({
-        algorithm: "gzip", // 或 'brotliCompress'
-        ext: ".gz",
-      }),
-      // 打包分析工具
-      visualizer({
-        open: true,
-        gzipSize: true,
-        brotliSize: true,
-      }),
-      // 预渲染
-      // 骨架屏
-    ].filter(Boolean),
-    build: {
-      minify: "terser", // 使用terser进行更强的压缩
-      terserOptions: {
-        compress: {
-          drop_console: true, // 移除console
-          drop_debugger: true, // 移除debugger
+export default defineConfig({
+  plugins: [
+    react(),
+    // 启用 Gzip/Brotli 压缩
+    viteCompression({
+      algorithm: "gzip", // 或 'brotliCompress'
+      ext: ".gz",
+    }),
+    // 打包分析工具
+    visualizer({
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }),
+    // cdnInjectPlugin(),
+    // 预渲染
+    // 骨架屏
+  ].filter(Boolean),
+  build: {
+    minify: "terser", // 使用terser进行更强的压缩
+    terserOptions: {
+      compress: {
+        drop_console: true, // 移除console
+        drop_debugger: true, // 移除debugger
+      },
+    },
+    reportCompressedSize: false, // 提高构建速度
+    chunkSizeWarningLimit: 2000, // 提高警告限制
+
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "antd-vendor": ["antd", "@ant-design/icons"],
         },
       },
-      reportCompressedSize: false, // 提高构建速度
-      chunkSizeWarningLimit: 2000, // 提高警告限制
     },
-  };
+  },
 });
+// function extractPackageName(id: string): string {
+//   // 检查是否包含 .pnpm
+//   if (id.includes('.pnpm')) {
+//     const pnpmMatch = id.match(/\.pnpm\/([^/@]+)/)
+//     if (pnpmMatch && pnpmMatch[1]) {
+//       return pnpmMatch[1]
+//     }
+//   }
+
+//   // 对于其他包管理工具（如 npm 或 yarn）
+//   const nodeModulesMatch = id.match(/node_modules\/([^/@]+)/)
+//   if (nodeModulesMatch && nodeModulesMatch[1]) {
+//     return nodeModulesMatch[1]
+//   }
+//   return 'vendor'
+// }
