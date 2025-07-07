@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
+import InjectPlugin from "./plugin/InjectPlugin";
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -17,7 +19,8 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
-    // cdnInjectPlugin(),
+    // CdnInjectPlugin(),
+    InjectPlugin(), // 注入自定义代码块
     // 预渲染
     // 骨架屏
   ].filter(Boolean),

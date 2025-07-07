@@ -8,7 +8,7 @@ interface CdnModule {
   css?: string;
 }
 
-export default function cdnInjectPlugin(): Plugin {
+export default function CdnInjectPlugin(): Plugin {
   // 定义需要通过CDN加载的依赖
   const cdnModules: CdnModule[] = [
     {

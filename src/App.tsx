@@ -1,18 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
-import zhCN from 'antd/lib/locale/zh_CN';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import zhCN from "antd/lib/locale/zh_CN";
 
-import Layout from './components/Layout';
-import { lazy } from 'react';
+import Layout from "./components/Layout";
+import { lazy, useEffect } from "react";
 // 懒加载路由组件
-const Home = lazy(() => import('./pages/Home'));
-const Skills = lazy(() => import('./pages/Skills'));
-const Experience = lazy(() => import('./pages/Experience'));
-const Projects = lazy(() => import('./pages/Projects'));
-const Works = lazy(() => import('./pages/Works'));
-const Contact = lazy(() => import('./pages/Contact'));
+const Home = lazy(() => import("./pages/Home"));
+const Skills = lazy(() => import("./pages/Skills"));
+const Experience = lazy(() => import("./pages/Experience"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Works = lazy(() => import("./pages/Works"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function App() {
+  useEffect(() => {
+    performance.mark("stage-App-start");
+  }, []);
   return (
     <ConfigProvider locale={zhCN}>
       <Router>
