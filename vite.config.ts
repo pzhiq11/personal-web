@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 import InjectPlugin from "./plugin/InjectPlugin";
+import CdnInjectPlugin from "./plugin/CdnInjectPlugin";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -19,7 +20,7 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
-    // CdnInjectPlugin(),
+    CdnInjectPlugin(),
     InjectPlugin(), // 注入自定义代码块
     // 预渲染
     // 骨架屏
@@ -36,12 +37,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 2000, // 提高警告限制
 
     rollupOptions: {
-      output: {
-        manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
-          "antd-vendor": ["antd", "@ant-design/icons"],
-        },
-      },
+      output: {},
     },
   },
 });
