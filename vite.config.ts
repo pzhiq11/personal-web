@@ -37,12 +37,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 2000, // 提高警告限制
 
     rollupOptions: {
-      output: {
-        // manualChunks: {
-        //   'antd': ['antd'],
-        // },
-        
-      },
+      output: {},
     },
   },
 });
@@ -57,8 +52,8 @@ export default defineConfig({
 
 //   // 对于其他包管理工具（如 npm 或 yarn）
 //   const nodeModulesMatch = id.match(/node_modules\/([^/@]+)/)
-//   if (nodeModulesMatch && nodeModulesMatch[1]) {
-//     return nodeModulesMatch[1]
-//   }
+//     if (nodeModulesMatch && nodeModulesMatch[1]) {
+//       return nodeModulesMatch[1]
+//     }
 //   return 'vendor'
 // }

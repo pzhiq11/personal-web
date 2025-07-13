@@ -58,9 +58,6 @@ export default function CdnInjectPlugin(): Plugin {
       // 确保 output 配置正确
       config.build.rollupOptions.output = {
         ...(config.build.rollupOptions.output || {}),
-        // manualChunks:{
-        //   'experience':['src/page/experience']
-        // },
         globals,
         format: 'iife', // 使用 IIFE 格式，确保全局变量可用
       };
