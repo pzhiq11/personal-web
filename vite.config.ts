@@ -37,7 +37,12 @@ export default defineConfig({
     chunkSizeWarningLimit: 2000, // 提高警告限制
 
     rollupOptions: {
-      output: {},
+      output: {
+        // manualChunks: {
+        //   'antd': ['antd'],
+        // },
+        
+      },
     },
   },
 });

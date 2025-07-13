@@ -47,8 +47,7 @@ export default function CdnInjectPlugin(): Plugin {
       config.build.rollupOptions = config.build.rollupOptions || {};
       
       // 设置外部依赖
-      const external = cdnModules.map(dep => dep.name);
-      config.build.rollupOptions.external = external;
+      config.build.rollupOptions.external =  cdnModules.map(dep => dep.name);
       
       // 设置全局变量映射
       const globals = cdnModules.reduce((prev, current) => {
@@ -59,6 +58,9 @@ export default function CdnInjectPlugin(): Plugin {
       // 确保 output 配置正确
       config.build.rollupOptions.output = {
         ...(config.build.rollupOptions.output || {}),
+        // manualChunks:{
+        //   'experience':['src/page/experience']
+        // },
         globals,
         format: 'iife', // 使用 IIFE 格式，确保全局变量可用
       };
@@ -74,11 +76,14 @@ export default function CdnInjectPlugin(): Plugin {
 
       // 生成JS脚本链接 - 确保按顺序加载
       const scriptLinks = cdnModules
-        .map(dep => `<script crossorigin src="${dep.path}"></script>`)
+        .map(dep => `<script defer crossorigin src="${dep.path}"></script>`)
         .join('\n');
 
-      // 将链接插入到</head>前
-      return html.replace('</head>', `${cssLinks}\n${scriptLinks}\n</head>`);
+      // 将链接插入到第一个 script 标签之前，确保 CDN 脚本先加载
+      return html.replace(
+        /<script[^>]*src="[^"]*"[^>]*>/,
+        `${cssLinks}\n${scriptLinks}\n$&`
+      );
     },
   };
 }
