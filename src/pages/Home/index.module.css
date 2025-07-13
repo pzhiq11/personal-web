@@ -7,16 +7,19 @@
   padding: 60px 0;
   min-height: 500px;
   animation: fadeIn 0.8s ease-out;
+  /* GPU加速 */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
@@ -28,6 +31,11 @@
   margin-bottom: 24px;
   background: linear-gradient(135deg, #1890ff, #722ed1);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* GPU加速 */
+  will-change: transform;
+  transform: translateZ(0);
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .title {
@@ -38,18 +46,28 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold !important;
+  /* 防止布局偏移 */
+  contain: layout style paint;
+  /* 字体优化 */
+  font-display: swap;
 }
 
 .subtitle {
   margin-bottom: 16px !important;
   color: #555;
   font-weight: normal !important;
+  /* 防止布局偏移 */
+  contain: layout style paint;
+  /* 字体优化 */
+  font-display: swap;
 }
 
 .infoText {
   margin-bottom: 32px;
   color: #666;
   font-size: 16px;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .actionButton {
@@ -59,10 +77,13 @@
   border-radius: 21px;
   transition: all 0.3s;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* GPU加速 */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .actionButton:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) translateZ(0);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -77,16 +98,19 @@
   animation: slideUp 0.8s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: both;
+  /* GPU加速 */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(40px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
@@ -96,6 +120,8 @@
   font-weight: bold !important;
   position: relative;
   display: inline-block;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .introTitle::after {
@@ -114,6 +140,8 @@
   line-height: 1.8;
   color: #666;
   max-width: 800px;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .infoCard {
@@ -124,10 +152,13 @@
   animation: fadeIn 0.8s ease-out;
   animation-delay: 0.4s;
   animation-fill-mode: both;
+  /* GPU加速 */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .infoCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) translateZ(0);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
@@ -137,6 +168,8 @@
   color: #333;
   position: relative;
   display: inline-block;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .infoCardTitle::after {
@@ -154,6 +187,8 @@
   display: flex;
   align-items: center;
   font-size: 16px;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .contactIcon {
@@ -175,6 +210,8 @@
   margin-bottom: 12px;
   color: #666;
   position: relative;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .skillItem::before {
@@ -195,6 +232,9 @@
   animation: slideUp 0.8s ease-out;
   animation-delay: 0.6s;
   animation-fill-mode: both;
+  /* GPU加速 */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .navTitle {
@@ -203,6 +243,8 @@
   font-weight: bold !important;
   position: relative;
   display: inline-block;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 .navTitle::after {
@@ -224,10 +266,13 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-width: 2px;
+  /* GPU加速 */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .navCard:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) translateZ(0);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -239,6 +284,8 @@
 .navCardTitle {
   margin-bottom: 0 !important;
   font-weight: bold !important;
+  /* 防止布局偏移 */
+  contain: layout style paint;
 }
 
 /* 响应式样式 */
@@ -248,17 +295,63 @@
   }
 
   .largeAvatar {
-    width: 120px;
-    height: 120px;
-    line-height: 120px;
-    font-size: 50px;
+    width: 100px !important;
+    height: 100px !important;
+    line-height: 100px !important;
+    font-size: 50px !important;
   }
 
-  .infoText {
-    padding: 0 20px;
+  .title {
+    font-size: 2rem !important;
+  }
+
+  .subtitle {
+    font-size: 1.1rem !important;
   }
 
   .actionButton {
-    margin-bottom: 10px;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .introSection {
+    padding: 30px 20px;
+  }
+
+  .navSection {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 40px 15px;
+    min-height: 400px;
+  }
+
+  .largeAvatar {
+    width: 80px !important;
+    height: 80px !important;
+    line-height: 80px !important;
+    font-size: 40px !important;
+  }
+
+  .title {
+    font-size: 1.8rem !important;
+  }
+
+  .subtitle {
+    font-size: 1rem !important;
+  }
+
+  .infoText {
+    font-size: 14px;
+  }
+
+  .actionButton {
+    padding: 0 16px;
+    height: 36px;
+    font-size: 13px;
   }
 } 
